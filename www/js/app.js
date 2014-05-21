@@ -30,7 +30,38 @@ routeApp.config(function($routeProvider) {
 		});
 });
 
-routeApp.controller('mainController', ['$scope', 'testAPIservice', function ($scope, testAPIservice) {
+
+routeApp.config(function($httpProvider){
+	$httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+});
+
+routeApp.controller('mainController', ['$scope','$http','testAPIservice', function ($scope, $http, testAPIservice) {
+
+    $scope.errors = [];
+    $scope.msgs = [];
+
+    $scope.signup = function() {
+
+        $scope.errors.splice(0, $scope.errors.length); // remove all error messages
+        $scope.msgs.splice(0, $scope.msgs.length);
+
+        $http.get('include/new_user.php', {'uname': $scope.user_name, 'pswd': $scope.user_password, 'email': $scope.user_email}
+        ).success(function(data, status, headers, config) {
+            if (data.msg != '')
+            {
+                $scope.msgs.push(data.msg);
+            }
+            else
+            {
+                $scope.errors.push(data.error);
+                $scope.msgs.push('nosuccess');
+            }
+        }).error(function(data, status) { // called asynchronously if an error occurs
+// or server returns response with an error status.
+            $scope.errors.push(status);
+        });
+    }
 
 	$scope.message = 'Home page message!';
 

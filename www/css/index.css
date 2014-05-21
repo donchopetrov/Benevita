@@ -113,7 +113,7 @@ h1 {
 	//border-right:1px #999 solid !important; 
 	background:#fff;
 	padding:0px;
-	margin-bottom:20px;
+	margin:0 0 20px 20px;
 }
 
 .formRow{
@@ -125,8 +125,19 @@ h1 {
 	padding-left:10px;
 }
 
-.Next{border:1px solid green;	font:normal 25px HelveticaLight;	color:green;height:60px;width:310px;background:#fff;}
+.Next{border:1px solid green;font:normal 25px HelveticaLight;color:green;height:60px;width:315px;background:#fff;margin-top:20px;}
 
 .header{position:absolute;top:0;left:0; width:100%;border-bottom:1px #999 solid;}
 .header p{margin:6px 0 0 120px;font:normal 20px HelveticaLight;}
 .header img{float:left;margin-left:10px;cursor:pointer;}
+
+.info{
+    border: 1px solid;margin: 10px 0px;
+    padding:10px;color: #00529B;
+    background-color: #BDE5F8;list-style: none;
+}
+.err{
+    border: 1px solid;  margin: 10px 0px;
+    padding:10px;  color: #D8000C;
+    background-color: #FFBABA;   list-style: none;
+}
