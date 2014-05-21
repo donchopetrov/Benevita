@@ -1,14 +1,12 @@
 'use strict';
 
 
+//angular.module('angularapp', ['ngRoute']);
 angular.module('angularapp', [
   'angularapp.controllers',
-  'angularapp.services',
-]);
-
-var routeApp = angular.module('angularapp', ['ngRoute']);
-
-routeApp.config(function($routeProvider) {
+  'ngRoute',
+]).
+config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 
 		// route for the home page
@@ -28,25 +26,8 @@ routeApp.config(function($routeProvider) {
 			templateUrl : 'partials/contact.html',
 			controller  : 'contactController'
 		});
-});
-
-routeApp.controller('mainController', ['$scope', 'testAPIservice', function ($scope, testAPIservice) {
-
-	$scope.message = 'Home page message!';
-
-	$scope.message2 = testAPIservice.testmsg;
-
-}]);
-
-routeApp.controller('aboutController', function($scope) {
-	$scope.message = 'About page redirect.';
-});
-
-routeApp.controller('contactController', function($scope) {
-	$scope.message = 'Contact us page redirect.';
-});
-
-routeApp.factory('testAPIservice', function($http) {
+}]).
+factory('testAPIservice', function($http) {
 
     var testAPI = [];
 
