@@ -31,10 +31,10 @@ routeApp.config(function($routeProvider) {
 });
 
 
-routeApp.config(function($httpProvider){
+/*routeApp.config(function($httpProvider){
 	$httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
-});
+});*/
 
 routeApp.controller('mainController', ['$scope','$http','testAPIservice', function ($scope, $http, testAPIservice) {
 
@@ -46,7 +46,7 @@ routeApp.controller('mainController', ['$scope','$http','testAPIservice', functi
         $scope.errors.splice(0, $scope.errors.length); // remove all error messages
         $scope.msgs.splice(0, $scope.msgs.length);
 
-        $http.get('include/new_user.php', {'uname': $scope.user_name, 'pswd': $scope.user_password, 'email': $scope.user_email}
+        $http.get('http://project.evgeni.svn.webfactory.bg/api/new_user.php', {'uname': $scope.user_name, 'pswd': $scope.user_password, 'email': $scope.user_email}
         ).success(function(data, status, headers, config) {
             if (data.msg != '')
             {
