@@ -11,14 +11,13 @@ config(['$routeProvider', function($routeProvider) {
 		// route for the home page
 		.when('/', {
 			templateUrl : 'partials/home.html',
-			controller  : 'mainController'
+			controller  : 'step1RegController'
 		})
 
-		// route for the about page
-		.when('/about', {
-			templateUrl : 'partials/about.html',
-			controller  : 'aboutController'
-		})
+        .when('/step2', {
+            templateUrl : 'partials/step2.html',
+            controller  : 'step2RegController'
+        })
 
 		// route for the contact page
 		.when('/contact', {
@@ -30,5 +29,4 @@ config(function($httpProvider){
 	$httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
-
 
