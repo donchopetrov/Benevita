@@ -1,0 +1,27 @@
+<div class="formWrapper" data-ng-init="getData();">
+	<form ng-submit="setData();redirect('/step4');">
+        <input type="text" disabled class="formRow" name="testId" id="testId" ng-model="cal">
+        <div class="test">Replace breakfast with Shake-It!</div>
+            <input type="Radio" class="inputRadio" ng-model="step3.shakeitOption" value="breakfast">
+        <div class="test">Replace lunch with Shake-It!</div>
+            <input type="Radio" class="inputRadio" ng-model="step3.shakeitOption" value="lunch">
+        <div class="test">Latest Benevita</div>
+            <input type="text" class="smallformRow" ng-model="step3.latestbenevita" placeholder="Date of Birth" style="border-bottom:0px !important; width:150px;">
+            <div class="clear"></div>
+        <br />
+        <input type="submit" name="Submit" value="Next" class="Next">
+    </form>
+</div><br />
+<div ng-repeat="test in data">
+    <p ng-show="test.user_name">{{test.user_name}}</p>
+    <p ng-show="test.user_email">{{test.user_email}}</p>
+    <p ng-show="test.user_pass">{{test.user_pass}}</p>
+    <p ng-show="test.gender">{{test.gender}}</p>
+    <p ng-show="test.dateofbirth">{{test.dateofbirth}}</p>
+    <p ng-show="test.units">{{test.units}}</p>
+    <p ng-show="test.height">{{test.height}}</p>
+    <p ng-show="test.currentweight">{{test.currentweight}}</p>
+    <p ng-show="test.goalweight">{{test.goalweight}}</p>
+</div>
+
+

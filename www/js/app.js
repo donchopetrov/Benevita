@@ -19,6 +19,16 @@ config(['$routeProvider', function($routeProvider) {
             controller  : 'step2RegController'
         })
 
+        .when('/step3', {
+            templateUrl : 'partials/step3.html',
+            controller  : 'step3RegController'
+        })
+
+        .when('/step4', {
+            templateUrl : 'partials/step4.html',
+            controller  : 'step4RegController'
+        })
+
 		// route for the contact page
 		.when('/contact', {
 			templateUrl : 'partials/contact.html',

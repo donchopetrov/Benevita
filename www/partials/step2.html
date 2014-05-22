@@ -1,19 +1,31 @@
-<div class="formWrapper">
-	<form name="testForm">
-	<div class="test">Gender:</div> <select class="formSelect"><option value="F">F<option value="M">M</select><div class="clear"></div>
-	<div class="test">Date of birth:</div>     <input type="input" class="smallformRow" ng-model="DateOfBirth" placeholder="Date of Birth" style="border-bottom:0px !important; width:150px;"><div class="clear"></div>
-	<div class="test">Units:</div> <select class="formSelect"><option value="Metric">Metric<option value="Imperial">Imperial</select><div class="clear"></div>
-    <input type="input" class="formRow" ng-model="Height" placeholder="Height" style="border-bottom:0px !important;">
-    <input type="input" class="formRow" ng-model="CurrentWeight" placeholder="Current Weight" style="border-bottom:0px !important;">
-    <input type="password" class="formRow" ng-model="GoalWeight" placeholder="Goal Weight" style="width:301px !important">
-
+<div class="formWrapper" data-ng-init="getData();">
+	<form ng-submit="setData();redirect('/step3');">
+	   <div class="test">Gender:</div>
+        <select class="formSelect" ng-model="step2.gender">
+            <option value="F" selected>F<option value="M">M</select>
+            <div class="clear"></div>
+        <div class="test">Date of birth:</div>
+            <input type="input" class="smallformRow" ng-model="step2.dateofbirth" placeholder="Date of Birth" style="border-bottom:0px !important; width:150px;">
+            <div class="clear"></div>
+        <div class="test">Units:</div>
+        <select class="formSelect" ng-model="step2.units">
+            <option value="Metric" selected>Metric<option value="Imperial">Imperial</select>
+            <div class="clear"></div>
+        <input type="input" class="formRow" ng-model="step2.height" placeholder="Height" style="border-bottom:0px !important;">
+        <input type="input" class="formRow" ng-model="step2.currentweight" placeholder="Current Weight" style="border-bottom:0px !important;">
+        <input type="input" class="formRow" ng-model="step2.goalweight" placeholder="Goal Weight" style="width:301px !important">
     <br />
-    <input type="submit" name="Submit" value="Next" class="Next" ng-click="#step2">
+    <input type="submit" name="Submit" value="Next" class="Next">
     </form>
-</div><br />
-<ul>
-    <li class="err" ng-repeat="error in errors"> {{ error}} </li>
-</ul>
-<ul>
-    <li class="info" ng-repeat="msg in msgs"> {{ msg}} </li>
-</ul>
+</div>
+<div ng-repeat="test in data">
+    <p ng-show="test.user_name">{{test.user_name}}</p>
+    <p ng-show="test.user_email">{{test.user_email}}</p>
+    <p ng-show="test.user_pass">{{test.user_pass}}</p>
+    <p ng-show="test.gender">{{test.gender}}</p>
+    <p ng-show="test.dateofbirth">{{test.dateofbirth}}</p>
+    <p ng-show="test.units">{{test.units}}</p>
+    <p ng-show="test.height">{{test.height}}</p>
+    <p ng-show="test.currentweight">{{test.currentweight}}</p>
+    <p ng-show="test.goalweight">{{test.goalweight}}</p>
+</div>
