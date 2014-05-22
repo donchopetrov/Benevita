@@ -1,0 +1,14 @@
+[alias]
+ ac = !git add -A && git commit
+ tree = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white). %an%C(reset)' --abbrev-commit
+ co = checkout
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+[core]
+ autocrlf = true
+ whitespace = cr-at-eol
+ sharedRepository = group
+[help]
+        autocorrect = 1

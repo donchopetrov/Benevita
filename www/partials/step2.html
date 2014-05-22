@@ -1,0 +1,19 @@
+<div class="formWrapper">
+	<form name="testForm">
+	<div class="test">Gender:</div> <select class="formSelect"><option value="F">F<option value="M">M</select><div class="clear"></div>
+	<div class="test">Date of birth:</div>     <input type="input" class="smallformRow" ng-model="DateOfBirth" placeholder="Date of Birth" style="border-bottom:0px !important; width:150px;"><div class="clear"></div>
+	<div class="test">Units:</div> <select class="formSelect"><option value="Metric">Metric<option value="Imperial">Imperial</select><div class="clear"></div>
+    <input type="input" class="formRow" ng-model="Height" placeholder="Height" style="border-bottom:0px !important;">
+    <input type="input" class="formRow" ng-model="CurrentWeight" placeholder="Current Weight" style="border-bottom:0px !important;">
+    <input type="password" class="formRow" ng-model="GoalWeight" placeholder="Goal Weight" style="width:301px !important">
+
+    <br />
+    <input type="submit" name="Submit" value="Next" class="Next" ng-click="#step2">
+    </form>
+</div><br />
+<ul>
+    <li class="err" ng-repeat="error in errors"> {{ error}} </li>
+</ul>
+<ul>
+    <li class="info" ng-repeat="msg in msgs"> {{ msg}} </li>
+</ul>

@@ -14,14 +14,13 @@ routeApp.config(function($routeProvider) {
 		// route for the home page
 		.when('/', {
 			templateUrl : 'partials/home.html',
-			controller  : 'mainController'
+			controller  : 'step1RegController'
 		})
 
-		// route for the about page
-		.when('/about', {
-			templateUrl : 'partials/about.html',
-			controller  : 'aboutController'
-		})
+        .when('/step2', {
+            templateUrl : 'partials/step2.html',
+            controller  : 'step2RegController'
+        })
 
 		// route for the contact page
 		.when('/contact', {
@@ -36,17 +35,46 @@ routeApp.config(function($routeProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });*/
 
-routeApp.controller('mainController', ['$scope','$http','testAPIservice', function ($scope, $http, testAPIservice) {
+routeApp.controller('step1RegController', ['$scope','$http','RegisterUser', function ($scope, $http, RegisterUser) {
+
+    $scope.user = RegisterUser;
+    $scope.user.user_name = $scope.user_name;   
+    $scope.user.user_password = $scope.user_password;
+    $scope.user.user_email = $scope.user_email;
 
     $scope.errors = [];
     $scope.msgs = [];
-
-    $scope.signup = function() {
+    $scope.step2 = function() {
+        myService.set($scope);
 
         $scope.errors.splice(0, $scope.errors.length); // remove all error messages
         $scope.msgs.splice(0, $scope.msgs.length);
 
-        $http.get('http://project.evgeni.svn.webfactory.bg/api/new_user.php', {'uname': $scope.user_name, 'pswd': $scope.user_password, 'email': $scope.user_email}
+    }
+
+}]);
+
+routeApp.controller('step2RegController', ['$scope','$http','RegisterUser', function ($scope, $http, RegisterUser) {
+
+    $scope.errors = [];
+    $scope.msgs = [];
+    $scope.user = RegisterUser;
+
+    $scope.msgs.push($scope.user.user_email);
+
+}]);
+
+routeApp.controller('contactController', function($scope) {
+	$scope.message = 'Contact us page redirect.';
+});
+
+
+routeApp.factory("RegisterUser",function(){
+        return {};
+});
+
+// working POST to access and INSERT into DB user info
+/*        $http.post('http://project.evgeni.svn.webfactory.bg/api/new_user.php', {'uname': $scope.user_name, 'pswd': $scope.user_password, 'email': $scope.user_email}
         ).success(function(data, status, headers, config) {
             if (data.msg != '')
             {
@@ -55,50 +83,9 @@ routeApp.controller('mainController', ['$scope','$http','testAPIservice', functi
             else
             {
                 $scope.errors.push(data.error);
-                $scope.msgs.push('nosuccess');
             }
-        }).error(function(data, status) { // called asynchronously if an error occurs
-// or server returns response with an error status.
+        }).error(function(data, status) { 
             $scope.errors.push(status);
-        });
-    }
+        });*/
 
-	$scope.message = 'Home page message!';
-
-	$scope.message2 = testAPIservice.testmsg;
-
-}]);
-
-routeApp.controller('aboutController', function($scope) {
-	$scope.message = 'About page redirect.';
-});
-
-routeApp.controller('contactController', function($scope) {
-	$scope.message = 'Contact us page redirect.';
-});
-
-routeApp.factory('testAPIservice', function($http) {
-
-    var testAPI = [];
-
-    testAPI.getUsers = function() {
-      return $http({
-        method: 'GET', 
-        url: '/include/add_user.php?get_users=TRUE',
-        isArray:true
-      });
-
-    }
-
-    testAPI.setUser = function() {
-    	$http.post('/include/add_user.php?set_user=TRUE', {uid: fbid})
-
-    }
-      
-    
-
-    testAPI.testmsg = "testmsg";
-
-    return testAPI;
-  });
 
