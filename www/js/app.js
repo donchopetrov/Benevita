@@ -87,5 +87,3 @@ routeApp.factory("RegisterUser",function(){
         }).error(function(data, status) { 
             $scope.errors.push(status);
         });*/
-
-
